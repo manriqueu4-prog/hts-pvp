@@ -38,7 +38,7 @@ function sanitize(m) {
     switch (m.t) {
         case 'pos':
             return isNum(m.x) && isNum(m.y) && Math.abs(m.x) < 1000 && Math.abs(m.y) < 1000
-                ? { t: 'pos', x: m.x, y: m.y } : null;
+                ? { t: 'pos', x: m.x, y: m.y, a: isNum(m.a) && Math.abs(m.a) < 100 ? m.a : undefined } : null;
         case 'hit':
             return isNum(m.d) ? { t: 'hit', d: Math.min(Math.max(m.d, 0), 300) } : null;
         case 'nade':
